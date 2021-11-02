@@ -1,0 +1,256 @@
+<script>
+  export let tip;
+</script>
+
+<article>
+  <h2>{tip.name}</h2>
+  <p>clicks: {tip.clicks}</p>
+  <p>created: {tip.created}</p>
+  <p>category: {tip.category}</p>
+  <p>{@html tip.desc}</p>
+  <p class="ips">
+    ips: {#each tip.ips as ip}<span>{ip}</span>{/each}
+  </p>
+  <p>votes.voteNum: {tip.votes.voteNum}</p>
+  <p>votes.total: {tip.votes.total}</p>
+  <p>votes.avg: {tip.votes.total / tip.votes.voteNum} / 5</p>
+  <hr />
+</article>
+
+<style lang="scss">
+  article {
+    align-items: center;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    box-shadow: 0 2px 0 #ddd;
+    margin-bottom: 15px;
+    padding: 12px 0;
+    transform: scale(0.99);
+    transition: all 0.15s;
+    display: grid;
+    grid-template-columns: 1fr 8fr 2fr;
+    grid-gap: 10px;
+
+    @media only screen and (max-width: 720px) {
+      padding: 20px 10px;
+      margin-bottom: 20px;
+      grid-template-columns: auto;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      transform: scale(1);
+    }
+
+    .num {
+      color: #777;
+      cursor: pointer;
+      font-size: 35px;
+      margin: 0;
+      line-height: 1;
+      font-family: "Permanent Marker", cursive;
+      justify-self: center;
+
+      @media only screen and (max-width: 720px) {
+        display: none;
+      }
+    }
+
+    .title {
+      margin: 0;
+      cursor: pointer;
+      font-size: 26px;
+
+      @media only screen and (max-width: 720px) {
+        justify-self: center;
+        text-align: center;
+      }
+    }
+
+    .votes {
+      text-align: center;
+      cursor: pointer;
+
+      @media only screen and (max-width: 720px) {
+        display: none;
+        font-style: italic;
+      }
+
+      .total {
+        margin: 0;
+        font-size: 24px;
+        color: var(--accent-color);
+        font-weight: 700;
+
+        @media only screen and (max-width: 720px) {
+          font-size: 22px;
+        }
+
+        .util,
+        .no-voted {
+          display: none;
+        }
+
+        .util,
+        .vote-max,
+        .no-voted {
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+    }
+
+    &.hovering,
+    &.show {
+      .votes .total {
+        .util,
+        .no-voted {
+          display: inline;
+        }
+      }
+    }
+
+    &.show {
+      transform: scale(1);
+
+      .more-text {
+        display: block;
+      }
+
+      .vote-forms {
+        display: block;
+
+        @media only screen and (max-width: 720px) {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media only screen and (max-width: 720px) {
+        .votes {
+          display: block;
+          grid-column-start: 1;
+        }
+      }
+    }
+
+    .more-text {
+      display: none;
+      grid-column-start: 2;
+      margin-top: 15px;
+
+      @media only screen and (max-width: 720px) {
+        grid-column-start: 1;
+      }
+
+      .desc {
+        p,
+        ul,
+        ol,
+        blockquote {
+          @media only screen and (max-width: 720px) {
+            font-size: 18px;
+            margin-bottom: 18px;
+          }
+        }
+      }
+
+      .cats {
+        margin: 30px 0;
+
+        @media only screen and (max-width: 720px) {
+          margin: 20px 0 10px;
+        }
+
+        .cat {
+          display: inline-block;
+          background: var(--grey-color);
+          border-radius: 5px;
+          padding: 5px;
+          color: var(--black-color);
+          margin-right: 15px;
+
+          @media only screen and (max-width: 720px) {
+            font-size: 18px;
+            margin-bottom: 10px;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .admin {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        margin: 15px 0;
+
+        .stats {
+          grid-column: span 2;
+          border: 1px solid;
+          padding: 12px;
+        }
+      }
+    }
+
+    .vote-forms {
+      display: none;
+      grid-column-start: 3;
+      background: var(--accent-color);
+      color: #fff;
+      border-radius: 10px;
+      padding: 15px 5px;
+      text-align: center;
+      margin: 0 8px;
+
+      @media only screen and (max-width: 720px) {
+        grid-column-start: 1;
+        justify-self: center;
+        padding: 15px 40px;
+      }
+
+      .vota {
+        padding-bottom: 10px;
+        font-size: 17px;
+        margin-bottom: 0;
+        line-height: 1.4;
+
+        @media only screen and (max-width: 720px) {
+          grid-column-start: span 2;
+        }
+      }
+
+      .gracias {
+        padding: 20px 0;
+      }
+
+      &.voted {
+        background: var(--accent-color-light);
+      }
+
+      form {
+        display: table;
+        margin: 0 auto;
+
+        input {
+          width: auto;
+          padding: 12px;
+          border-radius: 50%;
+          margin: 0;
+          display: inline-block;
+          background: transparent;
+          font-size: 19px;
+
+          &:hover {
+            background: #fff;
+          }
+        }
+      }
+    }
+  }
+</style>
