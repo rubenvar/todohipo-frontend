@@ -10,6 +10,8 @@
   header {
     position: absolute;
     z-index: 3;
+    top: 0;
+    left: 0;
     width: 100%;
   }
   .wrapper {
