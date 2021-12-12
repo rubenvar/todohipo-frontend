@@ -4,6 +4,11 @@ All the notable changes made to the [todohipo](https://todohipo.com) project **f
 
 ## [Unreleased]
 
+## [2.0.0] - 2021-12-12
+
+- Replace whole `pug` frontend with SvelteKit.
+- For now keep things simple, just display tips, unable to mutate, etc.
+
 ## [1.1.0] - 2020-05-01
 
 ### Added
