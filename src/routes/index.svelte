@@ -3,10 +3,10 @@
     const res = await fetch("/index.json");
 
     if (res.ok) {
-      const tips = await res.json();
+      const { tips, unsplash } = await res.json();
 
       return {
-        props: { tips },
+        props: { tips, unsplash },
       };
     }
 
@@ -18,20 +18,25 @@
 </script>
 
 <script>
+  import Hero from "$lib/Hero.svelte";
+  import heroImage from "$lib/stores/heroImage";
   import Tip from "$lib/Tip.svelte";
+
   export let tips;
+  export let unsplash;
+  heroImage.set(unsplash);
 </script>
 
-<h1>Todos los consejos</h1>
-<div class="list">
-  {#each tips as tip}
-    <Tip {tip} />
+<Hero length={tips.length} />
+<main>
+  {#each tips as tip, i}
+    <Tip {tip} {i} />
   {/each}
-</div>
+</main>
 
 <style lang="scss">
-  .list {
-    padding: 5px;
-    background: maroon;
+  main {
+    max-width: 900px;
+    margin: 30px auto 0;
   }
 </style>

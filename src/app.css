@@ -2,8 +2,16 @@
   --white-color: #fff;
   --black-color: #202020;
   --grey-color: #ddd;
+  --dark-grey-color: #666;
   --accent-color: #c100f2;
   --accent-color-light: #d141f6;
+
+  --maxWidth: 900px;
+
+  --normalFont: "Quicksand", sans-serif;
+  --normalFontVariable: "QuicksandVariable";
+  --specialFont: "Permanent Marker", cursive;
+
   box-sizing: border-box;
   font-size: 62.5%;
 }
@@ -17,13 +25,43 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Hind", sans-serif;
+  font-family: var(--normalFont);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+@supports (font-variation-settings: normal) {
+  h1,
+  h2,
+  h3 {
+    font-family: "QuicksandVariable";
+    font-variation-settings: "wght" 550;
+  }
 }
 
 p {
-  font-size: 1.6rem;
+  font-size: 2.2em;
+  line-height: 1.4;
 }
 
 a {
   transition: all 0.3s;
+}
+
+/* hack */
+.desc p,
+.desc ul,
+.desc ol,
+.desc blockquote {
+  font-size: 2.1rem;
+  margin-bottom: 18px;
+}
+
+.desc li {
+  margin-bottom: 14px;
+  line-height: 1.4;
 }

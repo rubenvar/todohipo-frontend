@@ -1,20 +1,18 @@
 <script>
   import "normalize.css";
-  // import Header from "$lib/Header.svelte";
-  // import Footer from "$lib/Footer.svelte";
   import "../app.css";
+  import "@fontsource/permanent-marker";
+  import "@fontsource/quicksand/400.css";
+  import "@fontsource/quicksand/700.css";
+  import "@fontsource/quicksand/variable.css";
+
+  import Header from "$lib/Header.svelte";
+  import Footer from "$lib/Footer.svelte";
 </script>
 
-<!-- <Header /> -->
-<main>
-  <slot />
-</main>
+<Header />
+<slot />
+<Footer />
 
-<!-- <Footer /> -->
 <style lang="scss">
-  main {
-    max-width: 1040px;
-    margin: 0 auto;
-    padding-top: 50px;
-  }
 </style>
