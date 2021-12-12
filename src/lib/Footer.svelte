@@ -3,6 +3,7 @@
 
   const currentYear = new Date().getFullYear();
   const { author } = $heroImage;
+  const hasImage = !!author;
 </script>
 
 <footer>
@@ -37,19 +38,21 @@
       Copyright ©{currentYear} -
       <a href="/politica-de-privacidad">Política de Privacidad</a>
     </p>
-    <p>
-      Foto de portada por <a
-        href="{author.link}?utm_source=todohipo.com&utm_medium=referral"
-        target="_blank"
-        rel="noreferrer">{author.user}</a
-      >
-      en
-      <a
-        href="https://unsplash.com?utm_source=todohipo.com&utm_medium=referral"
-        target="_blank"
-        rel="noreferrer">Unsplash</a
-      >
-    </p>
+    {#if hasImage}
+      <p>
+        Foto de portada por <a
+          href="{author.link}?utm_source=todohipo.com&utm_medium=referral"
+          target="_blank"
+          rel="noreferrer">{author.user}</a
+        >
+        en
+        <a
+          href="https://unsplash.com?utm_source=todohipo.com&utm_medium=referral"
+          target="_blank"
+          rel="noreferrer">Unsplash</a
+        >
+      </p>
+    {/if}
     <p>
       Creado con 🍌 por <a
         href="https://platanoplatano.com"
@@ -64,7 +67,7 @@
   footer {
     text-align: center;
     padding: 20px 0;
-    color: #ccc;
+    color: #555;
     font-size: 18px;
     background: #eee;
     margin-top: 90px;
@@ -81,10 +84,10 @@
     }
   }
   a {
-    color: #bbb;
+    color: #333;
     text-decoration: none;
     &:hover {
-      color: #ccc;
+      color: #555;
     }
   }
   hr {
