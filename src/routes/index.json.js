@@ -17,7 +17,7 @@ export async function get() {
     .then((res) => res.json())
     .then((data) => ({
       // Get the photo link and author
-      image: data.urls.regular,
+      image: data.urls.regular.replace('fm=jpg', 'fm=webp'),
       author: {
         user: data.user.name,
         link: data.user.links.html,
@@ -26,7 +26,7 @@ export async function get() {
     .catch((err) => {
       console.error(`Unsplash error: ${err.code}`);
       return {
-        image: '/images/cover/phone.jpg',
+        image: '/images/cover/cover.jpg',
         author: null,
       };
     });
