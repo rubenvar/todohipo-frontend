@@ -4,6 +4,10 @@ All the notable changes made to the [todohipo](https://todohipo.com) project **f
 
 ## [Unreleased]
 
+## [2.0.2] - 2021-12-12
+
+- Performance tweaks.
+
 ## [2.0.1] - 2021-12-12
 
 - Fixed lighthouse warnings.
